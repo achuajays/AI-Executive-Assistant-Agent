@@ -5,12 +5,12 @@ from typing import List, Optional
 import models
 import schemas
 from database import engine, SessionLocal
-
+from cors_config import add_cors
 # Create the database tables
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="ToDo API", description="FastAPI ToDo app with PostgreSQL")
-
+add_cors(app)
 
 # Dependency to get DB session
 def get_db():
